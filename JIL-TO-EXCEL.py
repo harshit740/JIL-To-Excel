@@ -37,7 +37,8 @@ with open(jilFileName, "rt") as jil:
             count +=1
             print(f"{count}", end="\r")
         else:
-            if linesInJill != "\n" and "/* ----" not in linesInJill:
+            linesInJill = linesInJill.strip()
+            if linesInJill != "\n" and "/* ----" not in linesInJill and linesInJill != "":
                 if "start_times" in linesInJill:
                     spli = linesInJill.split("start_times:")
                     oneJob["start_times"] = str(spli[1]).replace("\"","")
